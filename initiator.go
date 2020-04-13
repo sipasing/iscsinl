@@ -423,7 +423,7 @@ func writeFile(filename string, contents string) error {
 // ReScan triggers a scsi host scan so the kernel creates a block device for the
 // newly attached session, then waits for the block device to be created
 func (s *IscsiTargetSession) ReScan() error {
-	if err := writeFile(fmt.Sprintf("/sys/class/scsi_host/host%d/scan", s.hostID), "- - 1"); err != nil {
+	if err := writeFile(fmt.Sprintf("/sys/class/scsi_host/host%d/scan", s.hostID), "- - 0"); err != nil {
 		return err
 	}
 
