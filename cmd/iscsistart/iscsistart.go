@@ -28,7 +28,7 @@ func main() {
 		return
 	}
 
-	devices, err := iscsinl.MountIscsi(
+	device, err := iscsinl.MountIscsi(
 		iscsinl.WithInitiator(*initiatorName),
 		iscsinl.WithTarget(*targetAddr, *volumeName),
 		iscsinl.WithCmdsMax(uint16(*cmdsMax)),
@@ -39,7 +39,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-    for i := range devices {
-	    log.Printf("Mounted at dev %v", devices[i])
-    }
+	log.Printf("Mounted at dev %v", device)
 }
